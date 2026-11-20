@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Ledger — GTA VI Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-text">
+    <h1>Leonida Ledger</h1>
+    <p class="tagline">The offline trophy guide &amp; tracker for Grand Theft Auto VI on PlayStation 5 — every one of the 55 official trophies, in our own words, with sources.</p>
+    <p class="listline">55 trophies: 1 platinum · 2 gold · 6 silver · 46 bronze · 28 hidden · 1 possibly missable · all offline, one playthrough, about 200 hours.</p>
+  </div>
+  <div class="progress" id="progress" aria-live="polite">
+    <div class="bigcount"><span id="earnedCount">0</span><span class="of">/ 55 earned</span></div>
+    <div class="bar" role="progressbar" aria-label="Trophies earned"><div class="bar-fill" id="barFill"></div></div>
+    <p class="grade-counts" id="gradeCounts"></p>
+    <p class="platinum-line" id="platinumLine"></p>
+  </div>
+</header>
+<nav class="tabs" aria-label="Sections">
+  <button type="button" data-route="tracker" id="tab-tracker">Tracker</button>
+  <button type="button" data-route="roadmap" id="tab-roadmap">Roadmap</button>
+  <button type="button" data-route="missables" id="tab-missables">Missables</button>
+  <button type="button" data-route="save" id="tab-save">Save &amp; settings</button>
+  <span class="spacer"></span>
+  <label class="toggle" title="Hide story trophies until you earn them">
+    <input type="checkbox" id="spoilerToggle" checked> Hide story spoilers
+  </label>
+  <label class="toggle" title="Switch between the paper and night looks">
+    <input type="checkbox" id="themeToggle"> Night mode
+  </label>
+</nav>
+<main id="view"></main>
+<footer>
+  <p><strong>Sources.</strong> Trophy names, descriptions and grades: the official PS5 list on <span class="src">Exophase</span> and <span class="src">PSNProfiles</span>. Methods and the roadmap: <span class="src">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</span>, checked against <span class="src">Push Square</span> and <span class="src">KeenGamer</span>. Every guide on this page is written in our own words from those sources; where a detail is still unconfirmed, the guide says so. No Rockstar logo or official artwork is used anywhere in this app.</p>
+  <p><strong>Offline.</strong> This guide runs entirely from its own files and reaches for no network. Your progress and notes live only in this browser (localStorage) until you export them.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
