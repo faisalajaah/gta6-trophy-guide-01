@@ -115,6 +115,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 0 28px 30px; color: var(--m
   border: 1px solid var(--line); color: var(--muted); background: var(--surface-2);
 }
 .tag.missable { color: #a1271f; border-color: #d98a82; background: #fdf0ee; }
+.tag.hidden { color: var(--muted); border-style: dashed; }
 html[data-theme="night"] .tag.missable { color: #ff9a8a; border-color: #6e2b25; background: #2a1715; }
 .tag.story { color: var(--accent); border-color: var(--accent); }
 .target { font-size: 13px; color: var(--muted); }
@@ -153,6 +154,15 @@ html[data-theme="night"] .tag.missable { color: #ff9a8a; border-color: #6e2b25; 
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 14px 16px; }
 .card h3 { margin-top: 0; }
 .import input { font-size: 13px; margin-top: 8px; }
+/* Print: a clean checklist on paper — no tabs, toggles or buttons, and every
+   trophy row keeps its name, grade and guide together on one page. */
+@media print {
+  .tabs, .toggle, footer, .guide-link, .controls { display: none; }
+  body { background: #fff; }
+  .masthead { border-bottom: 2px solid #000; }
+  .trophy { break-inside: avoid; border-color: #999; }
+}
+
 @media (max-width: 640px) {
   .masthead, .tabs, main, footer { padding-left: 14px; padding-right: 14px; }
   h1 { font-size: 28px; }

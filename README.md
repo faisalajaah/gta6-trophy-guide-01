@@ -6,11 +6,24 @@
 
 Leonida Ledger is the offline guide and tracker for Grand Theft Auto VI on PlayStation 5. It covers the full official list of 55 trophies — 1 platinum, 2 gold, 6 silver and 46 bronze — with each trophy's official name, description and grade, a guide written in our own words, and its sources (the official list on Exophase and PSNProfiles, methods from PowerPyx, Push Square and KeenGamer). The tracker saves your progress in the browser and lets you export or import it; you can filter by grade, kind, story, missable, collectibles and activities, search, and hide story spoilers until a trophy is earned. There is a three-step roadmap to the platinum, the one possibly missable trophy is flagged with its full warning, and the app runs entirely from its own files — no Rockstar logo or official artwork, and no network at all.
 
+## The data
+
+`app/data/trophies.json` holds the full official PS5 list: 55 trophies (1 platinum, 2 gold, 6 silver, 46 bronze), with each trophy's official name, description and grade as PlayStation publishes them, whether it is hidden (28 are), its kind, its roadmap stage, and a guide written in our own words with its sources beside it. Names, descriptions and grades come from the official list on Exophase and PSNProfiles; methods and the roadmap draw on PowerPyx, Push Square and KeenGamer. Where a method is still unconfirmed — a few of the cryptic hidden trophies — the guide says so instead of inventing a step.
+
 ## Run it
 
 ```sh
 node serve.ts
 # then open http://localhost:8080
+```
+
+## Verify the hand-in
+
+```sh
+mkdir -p out1 out2
+MAKEFUN_OUTPUT_DIR=out1 node main.ts
+MAKEFUN_OUTPUT_DIR=out2 node main.ts
+diff -r out1 out2   # both runs must be byte-identical
 ```
 
 ---

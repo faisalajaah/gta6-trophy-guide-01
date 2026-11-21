@@ -23,6 +23,15 @@ const KIND_LABELS = {
   crime: 'Crime & robbery', money: 'Money', explore: 'Exploring', misc: 'Miscellaneous',
   completion: '100% completion', platinum: 'Platinum',
 };
+// Where each trophy sits in the three-step roadmap, shown as a tag so a
+// reader can tell at a glance whether to do it now or leave it for cleanup.
+const STAGE_LABELS = {
+  1: 'Roadmap: story',
+  2: 'Roadmap: alongside the story',
+  3: 'Roadmap: strangers',
+  4: 'Roadmap: cleanup',
+  5: 'Roadmap: platinum',
+};
 const GRADE_LABELS = { platinum: 'Platinum', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' };
 
 function save() {
@@ -51,9 +60,13 @@ function gradeDot(t) {
 function tagsFor(t) {
   const wrap = el('div', 'tags');
   wrap.append(el('span', 'tag', GRADE_LABELS[t.grade]));
-  wrap.append(el('span', 'tag', KIND_LABELS[t.kind] ?? t.kind));
+  // The platinum trophy's kind is "platinum" too, so its kind tag would
+  // repeat the grade tag word for word — skip it there.
+  if (t.kind !== t.grade) wrap.append(el('span', 'tag', KIND_LABELS[t.kind] ?? t.kind));
   if (t.story) wrap.append(el('span', 'tag story', 'Story'));
   if (t.missable) wrap.append(el('span', 'tag missable', 'Possibly missable'));
+  if (t.hidden) wrap.append(el('span', 'tag hidden', 'Hidden on PSN'));
+  if (t.stage) wrap.append(el('span', 'tag', STAGE_LABELS[t.stage] ?? `Stage ${t.stage}`));
   if (t.target) {
     const u = t.target.unit ?? '';
     const of = t.target.of ? ` of ${t.target.of}` : '';
