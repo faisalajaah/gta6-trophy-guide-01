@@ -157,3 +157,16 @@ html[data-theme="night"] .tag.missable { color: #ff9a8a; border-color: #6e2b25; 
   .masthead, .tabs, main, footer { padding-left: 14px; padding-right: 14px; }
   h1 { font-size: 28px; }
 }
+
+/* Keyboard focus: a visible ring on tabs, controls and links, so the guide is
+   usable without a mouse. It only shows for keyboard focus, never on click. */
+.tabs button[data-route]:focus-visible,
+.controls input[type="search"]:focus-visible,
+.controls select:focus-visible,
+.btn:focus-visible,
+a:focus-visible,
+.trophy input[type="checkbox"]:focus-visible,
+.detail textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

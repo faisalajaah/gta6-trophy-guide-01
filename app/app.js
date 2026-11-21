@@ -80,6 +80,7 @@ function sourceList(t) {
 function renderHeader() {
   const n = earned.size;
   document.getElementById('earnedCount').textContent = n;
+  document.title = n ? `Leonida Ledger — ${n} of 55 trophies earned` : 'Leonida Ledger — GTA VI Trophy Guide & Tracker';
   document.getElementById('barFill').style.width = `${(n / trophies.length) * 100}%`;
   const counts = ['platinum', 'gold', 'silver', 'bronze'].map(g => {
     const got = trophies.filter(t => t.grade === g && isEarned(t)).length;
@@ -175,7 +176,15 @@ function renderTracker() {
   const search = document.createElement('input');
   search.type = 'search'; search.placeholder = 'Search trophies, missions, places…';
   search.value = filters.q; search.setAttribute('aria-label', 'Search trophies');
-  search.addEventListener('input', () => { filters.q = search.value; render(); });
+  // Typing rebuilds this whole view, so the search box itself is recreated on
+  // every keystroke — without this, focus is lost after the first character.
+  search.addEventListener('input', () => {
+    filters.q = search.value;
+    const caret = search.selectionStart;
+    render();
+    const again = document.querySelector('.controls input[type="search"]');
+    if (again) { again.focus(); again.setSelectionRange(caret, caret); }
+  });
   controls.append(search);
   const grade = document.createElement('select');
   grade.setAttribute('aria-label', 'Filter by grade');
